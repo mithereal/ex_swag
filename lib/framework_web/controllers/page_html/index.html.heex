@@ -1,0 +1,104 @@
+<Layouts.app flash={@flash}>
+<!-- Hero -->
+<section class="text-center py-20 px-6">
+    <h1 class="text-5xl font-bold mb-6">Run Your Print Shop Like a Machine</h1>
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+        All-in-one print shop management. Quotes, orders, production, and payments — finally in one clean workflow.
+    </p>
+    <div class="flex justify-center gap-4">
+        <.link href={PhoenixKit.Utils.Routes.path("/users/register")} class="btn btn-primary btn-xl">
+       Start Your Free Trial
+    </.link>
+
+    </div>
+</section>
+
+<!-- Features -->
+<section class="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Smart Quotes</h3>
+        <p class="text-gray-400">Build complex quotes in seconds with pricing matrices, garment catalogs, and automatic markups.</p>
+    </div>
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Order Management</h3>
+        <p class="text-gray-400">Track every job from approval to delivery with status pipelines and real-time updates.</p>
+    </div>
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Production Scheduling</h3>
+        <p class="text-gray-400">Visual production calendar with drag-and-drop scheduling for screen printing, embroidery, and DTG.</p>
+    </div>
+
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Customer Portal</h3>
+        <p class="text-gray-400">Clients can approve quotes, upload artwork, and track orders without calling you.</p>
+    </div>
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Inventory Tracking</h3>
+        <p class="text-gray-400">Keep garments, inks, and supplies synced with live inventory and low-stock alerts.</p>
+    </div>
+    <div>
+        <h3 class="text-xl font-semibold mb-3">Payments & Invoices</h3>
+        <p class="text-gray-400">Accept deposits, send invoices, and automate reminders with integrated payments.</p>
+    </div>
+</section>
+
+<!-- Workflow -->
+<section class="py-20 px-6 ">
+    <h2 class="text-3xl font-bold text-center mb-12">From Quote to Delivery — Seamless</h2>
+    <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-6 text-center">
+        <div>
+            <p class="font-semibold">Quote</p>
+            <p class="text-gray-400 text-sm">Create & send</p>
+        </div>
+        <div>
+            <p class="font-semibold">Approve</p>
+            <p class="text-gray-400 text-sm">Customer signs off</p>
+        </div>
+        <div>
+            <p class="font-semibold">Produce</p>
+            <p class="text-gray-400 text-sm">Schedule & print</p>
+        </div>
+        <div>
+            <p class="font-semibold">Ship</p>
+            <p class="text-gray-400 text-sm">Track delivery</p>
+        </div>
+        <div>
+            <p class="font-semibold">Paid</p>
+            <p class="text-gray-400 text-sm">Collect balance</p>
+        </div>
+    </div>
+</section>
+
+<!-- Differentiation -->
+<section class="py-20 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">Why PrintFlow?</h2>
+    <div class="grid md:grid-cols-2 gap-10">
+        <div>
+            <h3 class="text-xl font-semibold mb-2">Simplicity</h3>
+            <p class="text-gray-400">Clean UI, fast quoting, and minimal training required for your team.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-2">Power</h3>
+            <p class="text-gray-400">Deep ERP features like production planning, cost tracking, and automation.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-2">Real-Time Insights</h3>
+            <p class="text-gray-400">Profit per job, bottlenecks, and shop performance at a glance.</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-2">Built for Growth</h3>
+            <p class="text-gray-400">Scale from garage shop to multi-location operation without switching tools.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Stop juggling spreadsheets.</h2>
+    <p class="text-gray-200 mb-8">Start running a real system built for print shops.</p>
+    <.link href={PhoenixKit.Utils.Routes.path("/users/register")} class="btn btn-primary btn-lg">
+
+    Sign Up
+</.link>
+</section>
+</Layouts.app>

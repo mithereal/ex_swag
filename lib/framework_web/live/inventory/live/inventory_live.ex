@@ -7,10 +7,10 @@ defmodule FrameworkWeb.Inventory.Live.InventoryLive do
 
   def mount(_, _, socket) do
     {:ok,
-      assign(socket,
-        items: load_items(),
-        page_title: "Inventory"
-      )}
+     assign(socket,
+       items: load_items(),
+       page_title: "Inventory"
+     )}
   end
 
   defp load_items do
@@ -37,8 +37,8 @@ defmodule FrameworkWeb.Inventory.Live.InventoryLive do
         <tbody>
           <%= for item <- @items do %>
             <tr class="border-t">
-              <td class="p-2"><%= item.name %></td>
-              <td class="p-2"><%= item.stock %></td>
+              <td class="p-2">{item.name}</td>
+              <td class="p-2">{item.stock}</td>
             </tr>
           <% end %>
         </tbody>

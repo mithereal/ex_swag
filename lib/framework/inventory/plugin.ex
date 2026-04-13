@@ -16,4 +16,3 @@ defmodule Framework.Inventory.Plugin do
 
   def enabled?(_), do: true
 end
-

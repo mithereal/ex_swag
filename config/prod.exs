@@ -134,7 +134,6 @@ config :logger, level: :info
 # - us-west-2 (Oregon)
 # - eu-north-1 (Stockholm)
 
-
 # TROUBLESHOOTING:
 # If you see "function false.post/4 is undefined":
 # 1. Check that Finch is in your mix.exs deps: {:finch, "~> 0.18"}

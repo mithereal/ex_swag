@@ -1,6 +1,6 @@
 # lib/print_industry/schemas/material.ex
 
-defmodule PrintIndustry.Material do
+defmodule Framework.Schema.Material do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -18,7 +18,15 @@ defmodule PrintIndustry.Material do
 
   def changeset(material, attrs) do
     material
-    |> cast(attrs, [:name, :category, :weight, :finish, :cost_per_unit, :supplier, :specifications])
+    |> cast(attrs, [
+      :name,
+      :category,
+      :weight,
+      :finish,
+      :cost_per_unit,
+      :supplier,
+      :specifications
+    ])
     |> validate_required([:name, :category])
     |> validate_number(:cost_per_unit, greater_than: 0)
   end

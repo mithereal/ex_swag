@@ -43,57 +43,66 @@ defmodule FrameworkWeb.Layouts do
           <img src={~p"/images/logo.svg"} width="36" />
         </a>
       </div>
-     <div class="flex-none">
-    <ul class="flex flex-row px-1 space-x-4 items-center">
-    <!-- Your existing navigation items -->
+      <div class="flex-none">
+        <ul class="flex flex-row px-1 space-x-4 items-center">
+          <!-- Your existing navigation items -->
 
-    <%= if assigns[:phoenix_kit_current_scope] && Scope.authenticated?(assigns.phoenix_kit_current_scope) do %>
-      <!-- Logged in: Show user info and actions -->
-      <li class="hidden sm:flex items-center text-sm text-base-content/70">
-        <.icon name="hero-user-circle" class="size-4 mr-1" />
-        <%= Scope.user_email(assigns.phoenix_kit_current_scope) %>
-      </li>
-      <li>
-        <.link href={PhoenixKit.Utils.Routes.path("/dashboard/settings")} class="btn btn-ghost btn-sm">
-          <.icon name="hero-user" class="size-4" />
-          <span class="hidden sm:inline ml-1">Account</span>
-        </.link>
-      </li>
-      <li>
-        <.link href={PhoenixKit.Utils.Routes.path("/users/log-out")} method="delete" class="btn btn-ghost btn-sm">
-          <.icon name="hero-arrow-right-on-rectangle" class="size-4" />
-          <span class="hidden sm:inline ml-1">Log out</span>
-        </.link>
-      </li>
-    <% else %>
-      <!-- Logged out: Show login/signup options -->
-      <li>
-        <.link href={PhoenixKit.Utils.Routes.path("/users/log-in")} class="btn btn-ghost btn-sm">
-          <.icon name="hero-arrow-left-on-rectangle" class="size-4" />
-          <span class="hidden sm:inline ml-1">Log in</span>
-        </.link>
-      </li>
-      <li>
-        <.link href={PhoenixKit.Utils.Routes.path("/users/register")} class="btn btn-primary btn-sm">
-          <.icon name="hero-user-plus" class="size-4" />
-          <span class="hidden sm:inline ml-1">Sign up</span>
-        </.link>
-      </li>
-    <% end %>
+          <%= if assigns[:phoenix_kit_current_scope] && Scope.authenticated?(assigns.phoenix_kit_current_scope) do %>
+            <!-- Logged in: Show user info and actions -->
+            <li class="hidden sm:flex items-center text-sm text-base-content/70">
+              <.icon name="hero-user-circle" class="size-4 mr-1" />
+              {Scope.user_email(assigns.phoenix_kit_current_scope)}
+            </li>
+            <li>
+              <.link
+                href={PhoenixKit.Utils.Routes.path("/dashboard/settings")}
+                class="btn btn-ghost btn-sm"
+              >
+                <.icon name="hero-user" class="size-4" />
+                <span class="hidden sm:inline ml-1">Account</span>
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={PhoenixKit.Utils.Routes.path("/users/log-out")}
+                method="delete"
+                class="btn btn-ghost btn-sm"
+              >
+                <.icon name="hero-arrow-right-on-rectangle" class="size-4" />
+                <span class="hidden sm:inline ml-1">Log out</span>
+              </.link>
+            </li>
+          <% else %>
+            <!-- Logged out: Show login/signup options -->
+            <li>
+              <.link href={PhoenixKit.Utils.Routes.path("/users/log-in")} class="btn btn-ghost btn-sm">
+                <.icon name="hero-arrow-left-on-rectangle" class="size-4" />
+                <span class="hidden sm:inline ml-1">Log in</span>
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={PhoenixKit.Utils.Routes.path("/users/register")}
+                class="btn btn-primary btn-sm"
+              >
+                <.icon name="hero-user-plus" class="size-4" />
+                <span class="hidden sm:inline ml-1">Sign up</span>
+              </.link>
+            </li>
+          <% end %>
 
-    <.theme_toggle />
-    </ul>
-    </div>
+          <.theme_toggle />
+        </ul>
+      </div>
     </header>
 
     <main class="px-4 py-20 sm:px-6 lg:px-8">
-        {render_slot(@inner_block)}
-
+      {render_slot(@inner_block)}
     </main>
 
     <!-- Footer -->
     <footer class="py-10 text-center text-gray-500">
-    © 2026 PrintFlow ERP. All rights reserved.
+      © 2026 PrintFlow ERP. All rights reserved.
     </footer>
 
     <.flash_group flash={@flash} />

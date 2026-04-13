@@ -1,6 +1,6 @@
 # lib/print_industry/schemas/order.ex
 
-defmodule PrintIndustry.Order do
+defmodule Framework.Schema.Order do
   use Ecto.Schema
   import Ecto.Changeset
 

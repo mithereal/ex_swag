@@ -16,7 +16,16 @@ config :phoenix_kit,
   repo: Framework.Repo,
   mailer: Framework.Mailer,
   layouts_module: FrameworkWeb.Layouts,
-  phoenix_version_strategy: :modern
+  phoenix_version_strategy: :modern,
+  user_dashboard_categories: [
+    %{
+      tabs: [
+        %{description: nil, title: "first item", url: "/dashboard", icon: "hero-document"}
+      ],
+      title: "General",
+      icon: "hero-folder"
+    }
+  ]
 
 config :framework,
   ecto_repos: [Framework.Repo],
@@ -139,8 +148,8 @@ config :framework, Oban,
   ]
 
 config :phoenix_kit,
-       redirect: [
-         after_login_path: "/home"
-       ]
+  redirect: [
+    after_login_path: "/home"
+  ]
 
 import_config "#{config_env()}.exs"

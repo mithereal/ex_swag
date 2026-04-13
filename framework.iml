@@ -124,6 +124,11 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/jumper" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/sleeplocks" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/unsafe" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/cldr_utils" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ex_cldr" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ex_cldr_currencies" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/number" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_kit_inventory" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="finch" level="project" />
@@ -370,5 +375,156 @@
     <orderEntry type="library" name="sleeplocks" level="project" />
     <orderEntry type="library" name="unsafe" level="project" />
     <orderEntry type="library" name="local_cluster" level="project" />
+    <orderEntry type="library" name="phoenix_kit_inventory" level="project" />
+    <orderEntry type="library" name="number" level="project" />
+    <orderEntry type="library" name="ex_cldr_currencies" level="project" />
+    <orderEntry type="library" name="ex_cldr" level="project" />
+    <orderEntry type="library" name="finch" level="project" />
+    <orderEntry type="library" name="phoenix" level="project" />
+    <orderEntry type="library" name="phoenix_ecto" level="project" />
+    <orderEntry type="library" name="ecto_sql" level="project" />
+    <orderEntry type="library" name="postgrex" level="project" />
+    <orderEntry type="library" name="phoenix_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_reload" level="project" />
+    <orderEntry type="library" name="phoenix_live_view" level="project" />
+    <orderEntry type="library" name="lazy_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_dashboard" level="project" />
+    <orderEntry type="library" name="esbuild" level="project" />
+    <orderEntry type="library" name="tailwind" level="project" />
+    <orderEntry type="library" name="swoosh" level="project" />
+    <orderEntry type="library" name="req" level="project" />
+    <orderEntry type="library" name="telemetry_metrics" level="project" />
+    <orderEntry type="library" name="telemetry_poller" level="project" />
+    <orderEntry type="library" name="gettext" level="project" />
+    <orderEntry type="library" name="jason" level="project" />
+    <orderEntry type="library" name="dns_cluster" level="project" />
+    <orderEntry type="library" name="bandit" level="project" />
+    <orderEntry type="library" name="remote_ip" level="project" />
+    <orderEntry type="library" name="cachex" level="project" />
+    <orderEntry type="library" name="phoenix_kit_legal" level="project" />
+    <orderEntry type="library" name="phoenix_kit_sync" level="project" />
+    <orderEntry type="library" name="phoenix_kit_catalogue" level="project" />
+    <orderEntry type="library" name="phoenix_kit_entities" level="project" />
+    <orderEntry type="library" name="phoenix_kit_emails" level="project" />
+    <orderEntry type="library" name="phoenix_kit_newsletters" level="project" />
+    <orderEntry type="library" name="phoenix_kit_ecommerce" level="project" />
+    <orderEntry type="library" name="phoenix_kit_billing" level="project" />
+    <orderEntry type="library" name="phoenix_kit_locations" level="project" />
+    <orderEntry type="library" name="finch" level="project" />
+    <orderEntry type="library" name="phoenix" level="project" />
+    <orderEntry type="library" name="phoenix_ecto" level="project" />
+    <orderEntry type="library" name="ecto_sql" level="project" />
+    <orderEntry type="library" name="postgrex" level="project" />
+    <orderEntry type="library" name="phoenix_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_reload" level="project" />
+    <orderEntry type="library" name="phoenix_live_view" level="project" />
+    <orderEntry type="library" name="lazy_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_dashboard" level="project" />
+    <orderEntry type="library" name="esbuild" level="project" />
+    <orderEntry type="library" name="tailwind" level="project" />
+    <orderEntry type="library" name="swoosh" level="project" />
+    <orderEntry type="library" name="req" level="project" />
+    <orderEntry type="library" name="telemetry_metrics" level="project" />
+    <orderEntry type="library" name="telemetry_poller" level="project" />
+    <orderEntry type="library" name="gettext" level="project" />
+    <orderEntry type="library" name="jason" level="project" />
+    <orderEntry type="library" name="dns_cluster" level="project" />
+    <orderEntry type="library" name="bandit" level="project" />
+    <orderEntry type="library" name="remote_ip" level="project" />
+    <orderEntry type="library" name="cachex" level="project" />
+    <orderEntry type="library" name="phoenix_kit_emails" level="project" />
+    <orderEntry type="library" name="phoenix_kit_newsletters" level="project" />
+    <orderEntry type="library" name="phoenix_kit_ecommerce" level="project" />
+    <orderEntry type="library" name="phoenix_kit_locations" level="project" />
+    <orderEntry type="library" name="bcrypt_elixir" level="project" />
+    <orderEntry type="library" name="gen_smtp" level="project" />
+    <orderEntry type="library" name="oauth2" level="project" />
+    <orderEntry type="library" name="ueberauth" level="project" />
+    <orderEntry type="library" name="ueberauth_google" level="project" />
+    <orderEntry type="library" name="ueberauth_apple" level="project" />
+    <orderEntry type="library" name="ueberauth_github" level="project" />
+    <orderEntry type="library" name="ueberauth_facebook" level="project" />
+    <orderEntry type="library" name="hackney" level="project" />
+    <orderEntry type="library" name="leaf" level="project" />
+    <orderEntry type="library" name="aws_regions" level="project" />
+    <orderEntry type="library" name="backblaze_regions" level="project" />
+    <orderEntry type="library" name="tigris_regions" level="project" />
+    <orderEntry type="library" name="earmark" level="project" />
+    <orderEntry type="library" name="yaml_elixir" level="project" />
+    <orderEntry type="library" name="nimble_csv" level="project" />
+    <orderEntry type="library" name="uuidv7" level="project" />
+    <orderEntry type="library" name="oban" level="project" />
+    <orderEntry type="library" name="hammer" level="project" />
+    <orderEntry type="library" name="websockex" level="project" />
+    <orderEntry type="library" name="sweet_xml" level="project" />
+    <orderEntry type="library" name="ex_aws" level="project" />
+    <orderEntry type="library" name="ex_aws_sqs" level="project" />
+    <orderEntry type="library" name="ex_aws_sns" level="project" />
+    <orderEntry type="library" name="ex_aws_sts" level="project" />
+    <orderEntry type="library" name="ex_aws_s3" level="project" />
+    <orderEntry type="library" name="ex_aws_ec2" level="project" />
+    <orderEntry type="library" name="saxy" level="project" />
+    <orderEntry type="library" name="igniter" level="project" />
+    <orderEntry type="library" name="beamlab_countries" level="project" />
+    <orderEntry type="library" name="phoenix_kit_publishing" level="project" />
+    <orderEntry type="library" name="websock_adapter" level="project" />
+    <orderEntry type="library" name="xlsx_reader" level="project" />
+    <orderEntry type="library" name="finch" level="project" />
+    <orderEntry type="library" name="phoenix" level="project" />
+    <orderEntry type="library" name="phoenix_ecto" level="project" />
+    <orderEntry type="library" name="ecto_sql" level="project" />
+    <orderEntry type="library" name="postgrex" level="project" />
+    <orderEntry type="library" name="phoenix_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_reload" level="project" />
+    <orderEntry type="library" name="phoenix_live_view" level="project" />
+    <orderEntry type="library" name="lazy_html" level="project" />
+    <orderEntry type="library" name="phoenix_live_dashboard" level="project" />
+    <orderEntry type="library" name="esbuild" level="project" />
+    <orderEntry type="library" name="tailwind" level="project" />
+    <orderEntry type="library" name="swoosh" level="project" />
+    <orderEntry type="library" name="req" level="project" />
+    <orderEntry type="library" name="telemetry_metrics" level="project" />
+    <orderEntry type="library" name="telemetry_poller" level="project" />
+    <orderEntry type="library" name="gettext" level="project" />
+    <orderEntry type="library" name="jason" level="project" />
+    <orderEntry type="library" name="dns_cluster" level="project" />
+    <orderEntry type="library" name="bandit" level="project" />
+    <orderEntry type="library" name="remote_ip" level="project" />
+    <orderEntry type="library" name="cachex" level="project" />
+    <orderEntry type="library" name="phoenix_kit_locations" level="project" />
+    <orderEntry type="library" name="bcrypt_elixir" level="project" />
+    <orderEntry type="library" name="gen_smtp" level="project" />
+    <orderEntry type="library" name="oauth2" level="project" />
+    <orderEntry type="library" name="ueberauth" level="project" />
+    <orderEntry type="library" name="ueberauth_google" level="project" />
+    <orderEntry type="library" name="ueberauth_apple" level="project" />
+    <orderEntry type="library" name="ueberauth_github" level="project" />
+    <orderEntry type="library" name="ueberauth_facebook" level="project" />
+    <orderEntry type="library" name="hackney" level="project" />
+    <orderEntry type="library" name="leaf" level="project" />
+    <orderEntry type="library" name="aws_regions" level="project" />
+    <orderEntry type="library" name="backblaze_regions" level="project" />
+    <orderEntry type="library" name="tigris_regions" level="project" />
+    <orderEntry type="library" name="earmark" level="project" />
+    <orderEntry type="library" name="yaml_elixir" level="project" />
+    <orderEntry type="library" name="nimble_csv" level="project" />
+    <orderEntry type="library" name="uuidv7" level="project" />
+    <orderEntry type="library" name="oban" level="project" />
+    <orderEntry type="library" name="hammer" level="project" />
+    <orderEntry type="library" name="websockex" level="project" />
+    <orderEntry type="library" name="sweet_xml" level="project" />
+    <orderEntry type="library" name="ex_aws" level="project" />
+    <orderEntry type="library" name="ex_aws_sqs" level="project" />
+    <orderEntry type="library" name="ex_aws_sns" level="project" />
+    <orderEntry type="library" name="ex_aws_sts" level="project" />
+    <orderEntry type="library" name="ex_aws_s3" level="project" />
+    <orderEntry type="library" name="ex_aws_ec2" level="project" />
+    <orderEntry type="library" name="saxy" level="project" />
+    <orderEntry type="library" name="igniter" level="project" />
+    <orderEntry type="library" name="beamlab_countries" level="project" />
+    <orderEntry type="library" name="phoenix_kit_publishing" level="project" />
+    <orderEntry type="library" name="websock_adapter" level="project" />
+    <orderEntry type="library" name="xlsx_reader" level="project" />
+    <orderEntry type="library" name="phoenix_kit_billing" level="project" />
   </component>
 </module>

@@ -64,6 +64,7 @@ defmodule FrameworkWeb.PhoenixKitLive.TestRequireAuthLive do
   end
 
   def mount(_params, _session, socket) do
+    IO.inspect(socket, label: "socket")
     {:ok, socket}
   end
 end

@@ -3,13 +3,13 @@
 defmodule FrameworkWeb.OrdersLive.Index do
   use FrameworkWeb, :live_view
 
-  alias PrintIndustry
+  alias Framework
 
   def mount(_params, _session, socket) do
     {:ok,
-      socket
-      |> assign(:page_title, "Orders")
-      |> stream(:orders, PrintIndustry.list_orders())}
+     socket
+     |> assign(:page_title, "Orders")
+     |> stream(:orders, Framework.list_orders())}
   end
 
   def render(assigns) do
@@ -31,7 +31,9 @@ defmodule FrameworkWeb.OrdersLive.Index do
             <tr>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Order #</th>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Quantity</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Quantity
+              </th>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
               <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
             </tr>
@@ -39,17 +41,21 @@ defmodule FrameworkWeb.OrdersLive.Index do
           <tbody class="divide-y divide-gray-200">
             <%= for {_id, order} <- @streams.orders do %>
               <tr>
-                <td class="px-6 py-4"><%= order.order_number %></td>
+                <td class="px-6 py-4">{order.order_number}</td>
                 <td class="px-6 py-4">
-                  <span class="px-2 py-1 rounded-full text-xs font-semibold"
-                        style={"background-color: #{status_color(order.status)}"}>
-                    <%= order.status %>
+                  <span
+                    class="px-2 py-1 rounded-full text-xs font-semibold"
+                    style={"background-color: #{status_color(order.status)}"}
+                  >
+                    {order.status}
                   </span>
                 </td>
-                <td class="px-6 py-4"><%= order.quantity %></td>
-                <td class="px-6 py-4">$<%= order.total_price %></td>
+                <td class="px-6 py-4">{order.quantity}</td>
+                <td class="px-6 py-4">${order.total_price}</td>
                 <td class="px-6 py-4">
-                  <.link navigate={~p"/orders/#{order.id}"} class="text-blue-600 hover:underline">View</.link>
+                  <.link navigate={~p"/orders/#{order.id}"} class="text-blue-600 hover:underline">
+                    View
+                  </.link>
                 </td>
               </tr>
             <% end %>

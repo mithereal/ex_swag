@@ -1,6 +1,6 @@
 # lib/print_industry/schemas/print_service.ex
 
-defmodule PrintIndustry.PrintService do
+defmodule Framework.Schema.PrintService do
   use Ecto.Schema
   import Ecto.Changeset
 

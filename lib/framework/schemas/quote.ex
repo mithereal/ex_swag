@@ -1,6 +1,6 @@
 # lib/print_industry/schemas/quote.ex
 
-defmodule PrintIndustry.Quote do
+defmodule Framework.Schema.Quote do
   use Ecto.Schema
   import Ecto.Changeset
 

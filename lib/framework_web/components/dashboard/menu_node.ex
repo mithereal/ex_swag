@@ -10,9 +10,7 @@ defmodule FrameworkWeb.Components.MenuNode do
   def menu_node(assigns) do
     ~H"""
     <div>
-
       <%= if Map.has_key?(@item, :children) do %>
-
         <button
           phx-click="toggle"
           phx-value-id={@item.id}
@@ -21,7 +19,7 @@ defmodule FrameworkWeb.Components.MenuNode do
             parent_active?(@item, @current_path) && "bg-gray-200 font-semibold"
           ]}
         >
-          <%= @item.label %>
+          {@item.label}
           <span>▸</span>
         </button>
 
@@ -32,9 +30,7 @@ defmodule FrameworkWeb.Components.MenuNode do
             <% end %>
           </div>
         <% end %>
-
       <% else %>
-
         <a
           href={@item.path}
           class={[
@@ -42,11 +38,9 @@ defmodule FrameworkWeb.Components.MenuNode do
             active?(@current_path, @item.path) && "bg-gray-200 font-semibold"
           ]}
         >
-          <%= @item.label %>
+          {@item.label}
         </a>
-
       <% end %>
-
     </div>
     """
   end

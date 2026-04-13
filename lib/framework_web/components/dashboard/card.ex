@@ -6,10 +6,9 @@ defmodule FrameworkWeb.Components.DashboardCard do
   def dashboard_card(assigns) do
     ~H"""
     <div class="p-4 border rounded bg-white h-full">
-      <div class="text-sm text-gray-500"><%= @item.title %></div>
-
+      <div class="text-sm text-gray-500">{@item.title}</div>
       <div class="text-xl font-bold">
-        <%= render_value(@item.value) %>
+        {render_value(@item.value)}
       </div>
     </div>
     """

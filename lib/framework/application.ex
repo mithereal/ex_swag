@@ -15,7 +15,7 @@ defmodule Framework.Application do
       PhoenixKit.Supervisor,
       {Phoenix.PubSub, name: Framework.PubSub},
       {Oban, Application.get_env(:framework, Oban)},
-        {Cachex, name: :plugin_cache},
+      {Cachex, name: :plugin_cache},
       # Start a worker by calling: Framework.Worker.start_link(arg)
       # {Framework.Worker, arg},
       # Start to serve requests, typically the last entry

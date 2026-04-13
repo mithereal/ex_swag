@@ -2,13 +2,13 @@
 
 defmodule Framework.Services do
   @moduledoc """
-  PrintIndustry context handles all business logic for print services,
+  Framework context handles all business logic for print services,
   orders, quotes, and materials.
   """
 
   import Ecto.Query, warn: false
   alias Framework.Repo
-  alias PrintIndustry.{PrintService, Order, Quote, Material}
+  alias Framework.{PrintService, Order, Quote, Material}
 
   # ============================================================================
   # Print Services
@@ -88,9 +88,12 @@ defmodule Framework.Services do
     service = get_print_service!(print_service_id)
     material = if material_id, do: Repo.get!(Material, material_id), else: nil
 
-    material_cost = if material, do: Decimal.mult(material.cost_per_unit, quantity), else: Decimal.new(0)
+    material_cost =
+      if material, do: Decimal.mult(material.cost_per_unit, quantity), else: Decimal.new(0)
+
     base_cost = Decimal.mult(service.base_price, quantity)
-    labor_cost = Decimal.new(50)  # Base labor cost
+    # Base labor cost
+    labor_cost = Decimal.new(50)
 
     subtotal = Decimal.add(base_cost, material_cost) |> Decimal.add(labor_cost)
     markup = Decimal.mult(subtotal, Decimal.new("0.25"))

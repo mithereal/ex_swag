@@ -8,8 +8,8 @@ defmodule FrameworkWeb.Components.Dashboard do
   def dashboard_card(assigns) do
     ~H"""
     <a href={@item.path} class="block p-4 border rounded hover:shadow">
-      <div class="text-sm text-gray-500"><%= @item.title %></div>
-      <div class="text-lg font-bold"><%= @item.value %></div>
+      <div class="text-sm text-gray-500">{@item.title}</div>
+      <div class="text-lg font-bold">{@item.value}</div>
     </a>
     """
   end

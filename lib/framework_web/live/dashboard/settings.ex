@@ -1,4 +1,4 @@
-defmodule FrameworkWeb.Live.Dashboard.Settings do
+defmodule FrameworkWeb.Dashboard.Settings do
   @moduledoc """
   Settings LiveView for PhoenixKit Dashboard.
 

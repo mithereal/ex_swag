@@ -21,35 +21,35 @@ defmodule FrameworkWeb.Router do
   scope "/", FrameworkWeb do
     pipe_through :browser
     get "/", PageController, :index
-    end
+  end
 
-#  scope "/print-services", FrameworkWeb do
-#    pipe_through [:browser, :require_authenticated_user]
-#
-#    live_session :print_services,
-#                 on_mount: [
-#                   {PhoenixKitWeb.Users.Auth, :mount_current_scope},
-#                   {PhoenixKitWeb.Users.Auth, :ensure_authenticated_scope}
-#                 ] do
-#      # Print Services
-#      live "/", ServicesLive.Index, :index
-#      live "/new", ServicesLive.New, :new
-#      live "/:id/edit", ServicesLive.Edit, :edit
-#      live "/:id", ServicesLive.Show, :show
-#
-#      # Orders
-#      live "/orders", OrdersLive.Index, :index
-#      live "/orders/new", OrdersLive.New, :new
-#      live "/orders/:id", OrdersLive.Show, :show
-#
-#      # Quotes
-#      live "/quotes", QuotesLive.Index, :index
-#      live "/quotes/:id", QuotesLive.Show, :show
-#
-#      # Materials
-#      live "/materials", MaterialsLive.Index, :index
-#    end
-#  end
+  #  scope "/print-services", FrameworkWeb do
+  #    pipe_through [:browser, :require_authenticated_user]
+  #
+  #    live_session :print_services,
+  #                 on_mount: [
+  #                   {PhoenixKitWeb.Users.Auth, :mount_current_scope},
+  #                   {PhoenixKitWeb.Users.Auth, :ensure_authenticated_scope}
+  #                 ] do
+  #      # Print Services
+  #      live "/", ServicesLive.Index, :index
+  #      live "/new", ServicesLive.New, :new
+  #      live "/:id/edit", ServicesLive.Edit, :edit
+  #      live "/:id", ServicesLive.Show, :show
+  #
+  #      # Orders
+  #      live "/orders", OrdersLive.Index, :index
+  #      live "/orders/new", OrdersLive.New, :new
+  #      live "/orders/:id", OrdersLive.Show, :show
+  #
+  #      # Quotes
+  #      live "/quotes", QuotesLive.Index, :index
+  #      live "/quotes/:id", QuotesLive.Show, :show
+  #
+  #      # Materials
+  #      live "/materials", MaterialsLive.Index, :index
+  #    end
+  #  end
 
   # Other scopes may use custom stacks.
   # scope "/api", FrameworkWeb do
@@ -77,21 +77,22 @@ defmodule FrameworkWeb.Router do
   scope "/" do
     pipe_through :browser
 
-    live_session :phoenix_kit_demo_current_scope,
+    live_session :current_scope,
       on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_mount_current_scope}] do
       live "/test-current-user", FrameworkWeb.PhoenixKitLive.TestRequireAuthLive, :index
     end
 
-    live_session :phoenix_kit_demo_redirect_if_auth_scope,
+    live_session :redirect_if_auth_scope,
       on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_redirect_if_authenticated_scope}] do
       live "/test-redirect-if-auth", FrameworkWeb.PhoenixKitLive.TestRedirectIfAuthLive, :index
     end
 
-    live_session :phoenix_kit_demo_ensure_auth_scope,
+    live_session :ensure_auth_scope,
       on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_ensure_authenticated_scope}] do
-      live "/home/dashboard", FrameworkWeb.DashboardLive, :index
+      live "/home/dashboard", FrameworkWeb.Dashboard.User, :index
+      live "/proof/:id", FrameworkWeb.DesignProofLive, :show
       live "/home/services", FrameworkWeb.ServicesLive.Index, :index
-      live "/home/inventory", FrameworkWeb.Inventory.Live.InventoryLive
+      live "/home/inventory", FrameworkWeb.Inventory.Live.InventoryLive, :index
       live "/home/materials", FrameworkWeb.MaterialsLive.Index, :index
       live "/home/test-ensure-auth", FrameworkWeb.PhoenixKitLive.TestEnsureAuthLive, :index
     end

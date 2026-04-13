@@ -68,8 +68,10 @@ defmodule Framework.MixProject do
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
       {:remote_ip, "~> 1.1"},
-                          {:cachex, "~> 4.0"},
-      {:phoenix_kit, github: "BeamLabEU/phoenix_kit", override: true},
+      {:cachex, "~> 4.0"},
+      # {:phoenix_kit, github: "BeamLabUS/phoenix_kit", override: true},
+      {:phoenix_kit, path: "../phoenix_kit", override: true},
+      {:phoenix_kit_billing, path: "../phoenix_kit_billing", override: true},
       {:phoenix_kit_legal, github: "BeamLabEU/phoenix_kit_legal"},
       {:phoenix_kit_sync, github: "BeamLabEU/phoenix_kit_sync"},
       {:phoenix_kit_catalogue, github: "BeamLabEU/phoenix_kit_catalogue"},
@@ -77,8 +79,7 @@ defmodule Framework.MixProject do
       {:phoenix_kit_emails, github: "BeamLabEU/phoenix_kit_emails"},
       {:phoenix_kit_newsletters, github: "BeamLabEU/phoenix_kit_newsletters"},
       {:phoenix_kit_ecommerce, github: "BeamLabEU/phoenix_kit_ecommerce"},
-      {:phoenix_kit_billing, github: "BeamLabEU/phoenix_kit_billing", override: true},
-      {:phoenix_kit_locations,github: "BeamLabEU/phoenix_kit_locations"}
+      {:phoenix_kit_locations, github: "BeamLabEU/phoenix_kit_locations"}
     ]
   end
 

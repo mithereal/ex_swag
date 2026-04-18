@@ -71,7 +71,7 @@ defmodule Framework.MixProject do
       {:cachex, "~> 4.0"},
       {:phoenix_kit, github: "BeamLabUS/phoenix_kit", override: true},
       #{:phoenix_kit, path: "../phoenix_kit", override: true},
-      {:phoenix_kit_billing, path: "BeamLabEU/phoenix_kit_billing", override: true},
+      {:phoenix_kit_billing, path: "BeamLabUS/phoenix_kit_billing", override: true},
     #  {:phoenix_kit_billing, path: "../phoenix_kit_billing", override: true},
       {:phoenix_kit_legal, github: "BeamLabEU/phoenix_kit_legal"},
       {:phoenix_kit_sync, github: "BeamLabEU/phoenix_kit_sync"},

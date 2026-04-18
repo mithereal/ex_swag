@@ -7,6 +7,7 @@ defmodule Framework.Application do
 
   @impl true
   def start(_type, _args) do
+
     children = [
       {Finch, [name: Swoosh.Finch]},
       FrameworkWeb.Telemetry,
@@ -19,7 +20,8 @@ defmodule Framework.Application do
       # Start a worker by calling: Framework.Worker.start_link(arg)
       # {Framework.Worker, arg},
       # Start to serve requests, typically the last entry
-      FrameworkWeb.Endpoint
+      FrameworkWeb.Endpoint,
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -35,4 +37,10 @@ defmodule Framework.Application do
     FrameworkWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  @build_date Mix.Project.config()[:build_date]
+  @build_hash Mix.Project.config()[:build_hash]
+
+  def build_hash, do: [build_hash: @build_hash]
+  def build_date, do: [build_date: @build_date]
 end

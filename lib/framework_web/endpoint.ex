@@ -36,6 +36,9 @@ defmodule FrameworkWeb.Endpoint do
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :framework
   end
 
+  plug :health
+  plug :version
+
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
     cookie_key: "request_logger"
@@ -52,4 +55,43 @@ defmodule FrameworkWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug FrameworkWeb.Router
+
+  def health(conn, _) do
+    case conn do
+      %{request_path: "/health"} -> conn |> send_resp(200, "OK") |> halt()
+      _ -> conn
+    end
+  end
+
+  def version(conn, _) do
+    case conn do
+      %{request_path: "/version"} ->
+        data = Framework.Application.version() |> Map.new() |> Jason.encode!()
+        conn |> put_resp_content_type("application/json") |> send_resp(200, data) |> halt()
+
+      %{request_path: "/version/build"} ->
+        [app: name] = Framework.Application.name()
+        [version: version] = Framework.Application.version()
+        [description: description] = Framework.Application.description()
+        [build_date: build_date] = Framework.Application.build_date()
+        [build_hash: build_hash] = Framework.Application.build_hash()
+
+        data =
+          Map.new()
+          |> Map.put(:application, %{
+            name: name,
+            version: version,
+            description: description,
+            date: build_date,
+            revision: build_hash
+          })
+          |> Map.put(:runtime, System.build_info())
+          |> Jason.encode!()
+
+        conn |> put_resp_content_type("application/json") |> send_resp(200, data) |> halt()
+
+      _ ->
+        conn
+    end
+  end
 end

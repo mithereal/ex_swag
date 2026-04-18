@@ -129,6 +129,117 @@
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/ex_cldr_currencies" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/number" />
       <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/phoenix_kit_inventory" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/goth" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/mail" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/dev/lib/resend" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/aws_regions" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/backblaze_regions" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/bandit" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/bcrypt_elixir" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/beamlab_countries" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/cachex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/certifi" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/combine" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/comeonin" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/db_connection" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/decimal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/dns_cluster" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/earmark" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ecto_sql" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/elixir_make" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/esbuild" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/eternal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws_ec2" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws_s3" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws_sns" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws_sqs" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_aws_sts" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ex_hash_ring" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/expo" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/finch" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/gen_smtp" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/gettext" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/glob_ex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/hackney" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/hammer" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/hpax" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/httpoison" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/idna" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/igniter" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/jason" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/jose" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/jumper" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/leaf" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/metrics" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/mimerl" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/mint" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/nimble_csv" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/nimble_options" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/nimble_pool" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/oauth2" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/oban" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/owl" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/parse_trans" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_ecto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_html" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_ai" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_billing" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_catalogue" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_ecommerce" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_emails" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_entities" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_legal" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_locations" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_newsletters" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_publishing" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_kit_sync" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_live_dashboard" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_live_view" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_pubsub" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/phoenix_template" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/plug" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/plug_crypto" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/postgrex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ranch" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/remote_ip" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/req" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/rewrite" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/saxy" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/sleeplocks" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/sourceror" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/spitfire" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ssl_verify_fun" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/stripity_stripe" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/sweet_xml" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/swoosh" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/tailwind" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/telemetry" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/telemetry_metrics" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/telemetry_poller" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/tesla" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/text_diff" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/thousand_island" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/tigris_regions" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ueberauth" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ueberauth_apple" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ueberauth_facebook" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ueberauth_github" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/ueberauth_google" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/unicode_util_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/unsafe" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/uri_query" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/uuidv7" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/websock" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/websock_adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/websockex" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/xlsx_reader" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/yamerl" />
+      <excludeFolder url="file://$MODULE_DIR$/_build/prod/lib/yaml_elixir" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="finch" level="project" />
@@ -526,5 +637,10 @@
     <orderEntry type="library" name="websock_adapter" level="project" />
     <orderEntry type="library" name="xlsx_reader" level="project" />
     <orderEntry type="library" name="phoenix_kit_billing" level="project" />
+    <orderEntry type="library" name="topbar" level="project" />
+    <orderEntry type="library" name="gridstack" level="project" />
+    <orderEntry type="library" name="swoosh_mua" level="project" />
+    <orderEntry type="library" name="goth" level="project" />
+    <orderEntry type="library" name="resend" level="project" />
   </component>
 </module>

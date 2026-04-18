@@ -49,7 +49,10 @@ config :framework, FrameworkWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :framework, Framework.Mailer, adapter: Swoosh.Adapters.Local
+# config :framework, Framework.Mailer, adapter: Swoosh.Adapters.Local
+
+config :framework, Framework.Mailer, adapter: Resend.Swoosh.Adapter
+
 
 # Configure esbuild (the version is required)
 config :esbuild,

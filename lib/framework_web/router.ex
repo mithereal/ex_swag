@@ -21,6 +21,7 @@ defmodule FrameworkWeb.Router do
   scope "/", FrameworkWeb do
     pipe_through :browser
     get "/", PageController, :index
+    get "/healthz", PageController, :health
   end
 
   #  scope "/print-services", FrameworkWeb do

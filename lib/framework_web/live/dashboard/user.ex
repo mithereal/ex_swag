@@ -165,7 +165,6 @@ defmodule FrameworkWeb.Dashboard.User do
           <div
             id="grid_container"
             class="grid-stack mt-4"
-
             data-options={Jason.encode!(@grid_options)}
           >
             <%= for w <- @widgets do %>
@@ -311,34 +310,35 @@ defmodule FrameworkWeb.Dashboard.User do
     Layout.remove_widget(socket.assigns.phoenix_kit_current_user, uuid)
 
     {:noreply,
-      assign(socket,
-        widgets: Layout.widgets_for(socket.assigns.current_user),
-        available: Widget.load_all_widgets(socket.assigns.current_user)
-      )}
+     assign(socket,
+       widgets: Layout.widgets_for(socket.assigns.current_user),
+       available: Widget.load_all_widgets(socket.assigns.current_user)
+     )}
   end
-#
-#  def handle_event("save_grid", %{"items" => items}, socket) do
-#    layouts =
-#      Enum.map(items, fn item ->
-#        %{
-#          user_uuid: socket.assigns.phoenix_kit_current_user.uuid,
-#          uuid: item["uuid"],
-#          x: parse_int(item["x"]),
-#          y: parse_int(item["y"]),
-#          w: parse_int(item["w"], 3),
-#          h: parse_int(item["h"], 2),
-#          updated_at: DateTime.utc_now() |> DateTime.truncate(:second)
-#        }
-#      end)
-#
-#    case Layout.save_grid(socket.assigns.phoenix_kit_current_user, items) do
-#      :ok ->
-#        {:noreply, socket}
-#
-#      {:error, _reason} ->
-#        {:noreply, put_flash(socket, :error, "Failed to save layout")}
-#    end
-#
-#    {:noreply, socket}
-#  end
+
+  #
+  #  def handle_event("save_grid", %{"items" => items}, socket) do
+  #    layouts =
+  #      Enum.map(items, fn item ->
+  #        %{
+  #          user_uuid: socket.assigns.phoenix_kit_current_user.uuid,
+  #          uuid: item["uuid"],
+  #          x: parse_int(item["x"]),
+  #          y: parse_int(item["y"]),
+  #          w: parse_int(item["w"], 3),
+  #          h: parse_int(item["h"], 2),
+  #          updated_at: DateTime.utc_now() |> DateTime.truncate(:second)
+  #        }
+  #      end)
+  #
+  #    case Layout.save_grid(socket.assigns.phoenix_kit_current_user, items) do
+  #      :ok ->
+  #        {:noreply, socket}
+  #
+  #      {:error, _reason} ->
+  #        {:noreply, put_flash(socket, :error, "Failed to save layout")}
+  #    end
+  #
+  #    {:noreply, socket}
+  #  end
 end

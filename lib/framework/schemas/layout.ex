@@ -19,8 +19,6 @@ defmodule Framework.Schema.Layout do
     timestamps()
   end
 
-  alias PhoenixKit.Dashboard.Widget.Layout
-
   defp repo, do: PhoenixKit.RepoHelper.repo()
 
   def changeset(grid_layout, attrs) do

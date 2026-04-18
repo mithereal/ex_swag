@@ -104,7 +104,7 @@ defmodule FrameworkWeb.Dashboard.User do
               y: params["y"] || 0,
               w: params["w"] || 2,
               h: params["h"] || 2,
-              title: "New Item"
+              name: params["name"] || "New Item"
             }
           ]
       end)
@@ -307,15 +307,15 @@ defmodule FrameworkWeb.Dashboard.User do
     end
   end
 
-#  def handle_event("remove_widget", %{"uuid" => uuid}, socket) do
-#    Layout.remove_widget(socket.assigns.phoenix_kit_current_user, uuid)
-#
-#    {:noreply,
-#      assign(socket,
-#        widgets: Layout.widgets_for(socket.assigns.current_user),
-#        available: Widget.load_all_widgets(socket.assigns.current_user)
-#      )}
-#  end
+  def handle_event("remove_widget", %{"uuid" => uuid}, socket) do
+    Layout.remove_widget(socket.assigns.phoenix_kit_current_user, uuid)
+
+    {:noreply,
+      assign(socket,
+        widgets: Layout.widgets_for(socket.assigns.current_user),
+        available: Widget.load_all_widgets(socket.assigns.current_user)
+      )}
+  end
 #
 #  def handle_event("save_grid", %{"items" => items}, socket) do
 #    layouts =

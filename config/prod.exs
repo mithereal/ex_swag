@@ -141,5 +141,6 @@ config :logger, level: :info
 # 3. Check that Swoosh.Finch is in application.ex children
 # 4. Make sure there's no "api_client: false" in dev.exs
 # 5. Restart your Phoenix server after changes
+
 #
 # See full setup guide: docs/AWS_SES_SETUP.md

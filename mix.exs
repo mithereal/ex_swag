@@ -4,6 +4,7 @@ defmodule Framework.MixProject do
   def project do
     [
       app: :framework,
+      description: "A ERP for Printable Services",
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -11,7 +12,9 @@ defmodule Framework.MixProject do
       aliases: aliases(),
       deps: deps(),
       compilers: [:phoenix_live_view, :phoenix_kit_css_sources] ++ Mix.compilers(),
-      listeners: [Phoenix.CodeReloader]
+      listeners: [Phoenix.CodeReloader],
+      build_date: DateTime.utc_now(),
+      build_hash: __MODULE__.get_hash()
     ]
   end
 
@@ -69,9 +72,11 @@ defmodule Framework.MixProject do
       {:bandit, "~> 1.5"},
       {:remote_ip, "~> 1.1"},
       {:cachex, "~> 4.0"},
-      # {:phoenix_kit, github: "BeamLabUS/phoenix_kit", override: true},
-      {:phoenix_kit, path: "../phoenix_kit", override: true},
-      {:phoenix_kit_billing, path: "../phoenix_kit_billing", override: true},
+      {:phoenix_kit,
+       github: "BeamLabUS/phoenix_kit", branch: "dashboard-widgets", override: true},
+      # {:phoenix_kit, path: "../phoenix_kit", override: true},
+      {:phoenix_kit_billing, github: "BeamLabUS/phoenix_kit_billing", override: true},
+      #  {:phoenix_kit_billing, path: "../phoenix_kit_billing", override: true},
       {:phoenix_kit_legal, github: "BeamLabEU/phoenix_kit_legal"},
       {:phoenix_kit_sync, github: "BeamLabEU/phoenix_kit_sync"},
       {:phoenix_kit_catalogue, github: "BeamLabEU/phoenix_kit_catalogue"},
@@ -79,7 +84,9 @@ defmodule Framework.MixProject do
       {:phoenix_kit_emails, github: "BeamLabEU/phoenix_kit_emails"},
       {:phoenix_kit_newsletters, github: "BeamLabEU/phoenix_kit_newsletters"},
       {:phoenix_kit_ecommerce, github: "BeamLabEU/phoenix_kit_ecommerce"},
-      {:phoenix_kit_locations, github: "BeamLabEU/phoenix_kit_locations"}
+      {:phoenix_kit_locations, github: "BeamLabEU/phoenix_kit_locations"},
+      {:gridstack, github: "gridstack/gridstack.js", app: false, compile: false},
+      {:resend, "~> 0.4.0"}
     ]
   end
 
@@ -98,11 +105,19 @@ defmodule Framework.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["compile", "tailwind framework", "esbuild framework"],
       "assets.deploy": [
+        "cmd --cd assets npm ci",
         "tailwind framework --minify",
         "esbuild framework --minify",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
     ]
+  end
+
+  def get_hash do
+    {hash, _} = System.cmd("git", ["rev-parse", "--short=8", "HEAD"])
+    String.trim(hash)
+  catch
+    _x -> ""
   end
 end

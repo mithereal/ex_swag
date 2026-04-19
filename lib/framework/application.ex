@@ -35,4 +35,10 @@ defmodule Framework.Application do
     FrameworkWeb.Endpoint.config_change(changed, removed)
     :ok
   end
+
+  @build_date Mix.Project.config()[:build_date]
+  @build_hash Mix.Project.config()[:build_hash]
+
+  def build_hash, do: [build_hash: @build_hash]
+  def build_date, do: [build_date: @build_date]
 end

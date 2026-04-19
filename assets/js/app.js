@@ -28,6 +28,7 @@ import GridStackHooks from './hooks/gridstack_hooks'
 
 let Hooks = {...GridStackHooks}
 
+
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 const liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,

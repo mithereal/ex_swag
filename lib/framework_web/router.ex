@@ -2,7 +2,6 @@ defmodule FrameworkWeb.Router do
   use FrameworkWeb, :router
 
   import PhoenixKitWeb.Integration
-  import PhoenixKitWeb.Users.Auth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -78,17 +77,17 @@ defmodule FrameworkWeb.Router do
     pipe_through :browser
 
     live_session :current_scope,
-      on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_mount_current_scope}] do
+      on_mount: [{FrameworkWeb.Users.Auth, :phoenix_kit_mount_current_scope}] do
       live "/test-current-user", FrameworkWeb.PhoenixKitLive.TestRequireAuthLive, :index
     end
 
     live_session :redirect_if_auth_scope,
-      on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_redirect_if_authenticated_scope}] do
+      on_mount: [{FrameworkWeb.Users.Auth, :phoenix_kit_redirect_if_authenticated_scope}] do
       live "/test-redirect-if-auth", FrameworkWeb.PhoenixKitLive.TestRedirectIfAuthLive, :index
     end
 
     live_session :ensure_auth_scope,
-      on_mount: [{PhoenixKitWeb.Users.Auth, :phoenix_kit_ensure_authenticated_scope}] do
+      on_mount: [{FrameworkWeb.Users.Auth, :phoenix_kit_ensure_authenticated_scope}] do
       live "/home/dashboard", FrameworkWeb.Dashboard.User, :index
       live "/proof/:id", FrameworkWeb.DesignProofLive, :show
       live "/home/services", FrameworkWeb.ServicesLive.Index, :index

@@ -4,6 +4,7 @@ defmodule FrameworkWeb.Dashboard.User do
   """
 
   use FrameworkWeb, :live_view
+  use PhoenixKitWeb.Components.Dashboard.LiveTabs
 
   alias PhoenixKit.Dashboard.Widget
   alias Framework.Schema.Layout
@@ -13,22 +14,33 @@ defmodule FrameworkWeb.Dashboard.User do
   import PhoenixKitWeb.Components.Core.UserDashboardHeader,
     only: [user_dashboard_header: 1]
 
+  @page "dashboard"
   @impl true
   def mount(_params, _session, socket) do
     user = socket.assigns.phoenix_kit_current_user
+    page = "dashboard"
 
     socket =
       assign(socket,
         show_sidebar: true
       )
 
+    layout =
+      case Layout.layout_for(user, @page) do
+        nil -> Framework.System.create_layout(user, @page)
+        layout -> layout
+      end
+
+    grid_items = Framework.Dashboard.Grid.from_layout(layout)
+
     socket =
       socket
       |> assign(
         page_title: @page_title,
-        widgets: Layout.widgets_for(user),
-        available: Widget.load_all_widgets(),
-        selected: MapSet.new()
+        grid_items: grid_items,
+        available: Framework.Schema.Widget.diff_widgets(grid_items, Widget.load_all_widgets()),
+        selected: MapSet.new(),
+        layout_uuid: layout.uuid
       )
       |> assign(:grid_options, %{
         float: false,
@@ -89,39 +101,49 @@ defmodule FrameworkWeb.Dashboard.User do
     {:noreply, socket}
   end
 
-  ## fixme:: name
-  def handle_event("grid:item_added", %{"widget" => widget} = params, socket) do
-    IO.inspect({:added, params})
+  defp repo, do: PhoenixKit.RepoHelper.repo()
+
+  def handle_event(
+        "grid:item_added",
+        %{"widget" => uuid, "layout" => layout_uuid} = params,
+        socket
+      ) do
+    ## check if module widget actually exists
+    widget = Widget.get_widget(uuid)
+    # widget_in_grid = Framework.System.widget_in_grid(uuid,layout_uuid)
 
     socket =
-      socket
-      |> update(:grid_items, fn items ->
-        items ++
-          [
-            %{
-              uuid: widget,
-              x: params["x"] || 0,
-              y: params["y"] || 0,
-              w: params["w"] || 2,
-              h: params["h"] || 2,
-              name: params["name"] || "New Item"
-            }
-          ]
-      end)
-      |> assign(:last_event, {:item_added, widget})
+      if(widget) do
+        # if(widget && !widget_in_grid) do
+        Framework.System.add_widget(uuid, layout_uuid)
+
+        user = socket.assigns.phoenix_kit_current_user
+
+        grid_items =
+          Layout.layout_for(user, @page)
+          |> Framework.Dashboard.Grid.from_layout()
+
+        socket
+        |> assign(
+          grid_items: grid_items,
+          available: Framework.Schema.Widget.diff_widgets(grid_items, Widget.load_all_widgets()),
+          selected: MapSet.new()
+        )
+      else
+        socket
+      end
 
     {:noreply, socket}
   end
 
-  def handle_event("grid:item_removed", %{"id" => id}, socket) do
-    IO.inspect({:removed, id})
+  def handle_event("grid:item_removed", %{"uuid" => uuid}, socket) do
+    IO.inspect({:removed, uuid})
 
     socket =
       socket
       |> update(:grid_items, fn items ->
-        Enum.reject(items, fn item -> item.id == id end)
+        Enum.reject(items, fn item -> item.uuid == uuid end)
       end)
-      |> assign(:last_event, {:item_removed, id})
 
     {:noreply, socket}
   end
@@ -154,7 +176,7 @@ defmodule FrameworkWeb.Dashboard.User do
   @impl true
   def render(assigns) do
     ~H"""
-    <PhoenixKitWeb.Layouts.dashboard {dashboard_assigns(assigns)}>
+    <FrameworkWeb.Layouts.dashboard {dashboard_assigns(assigns)}>
       <div class="flex max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-6">
         
     <!-- MAIN CONTENT -->
@@ -165,16 +187,15 @@ defmodule FrameworkWeb.Dashboard.User do
           <div
             id="grid_container"
             class="grid-stack mt-4"
-
             data-options={Jason.encode!(@grid_options)}
           >
-            <%= for w <- @widgets do %>
+            <%= for w <- @grid_items do %>
               <div
                 id={"widget-#{w.uuid}"}
                 class="grid-stack-item"
                 data-config='{"minW": 1, "minH": 1}'
-                data-uuid={w.uuid}
-                data-name={w.name}
+                data-uuid={w.widget.uuid}
+                data-name={w.widget.name}
                 phx-hook="GridStackItem"
                 gs-x={w.x}
                 gs-y={w.y}
@@ -182,7 +203,7 @@ defmodule FrameworkWeb.Dashboard.User do
                 gs-h={w.h}
               >
                 <div class="grid-stack-item-content">
-                  <.dashboard_stack item={w} />
+                  <.dashboard_stack item={w.widget} />
                 </div>
               </div>
             <% end %>
@@ -248,6 +269,7 @@ defmodule FrameworkWeb.Dashboard.User do
                           class="btn btn-xs btn-primary"
                           phx-click="grid:item_added"
                           phx-value-widget={w.uuid}
+                          phx-value-layout={@layout_uuid}
                         >
                           Add
                         </button>
@@ -268,7 +290,7 @@ defmodule FrameworkWeb.Dashboard.User do
       >
         +
       </button>
-    </PhoenixKitWeb.Layouts.dashboard>
+    </FrameworkWeb.Layouts.dashboard>
     """
   end
 
@@ -278,67 +300,45 @@ defmodule FrameworkWeb.Dashboard.User do
       <div class="card-body p-3">
         <div class="flex items-center justify-between">
           <span class="font-semibold text-sm">
-            {@item.title}
+            {@item.name}
           </span>
 
           <button
             class="btn btn-xs btn-ghost"
             phx-click="remove_widget"
             phx-value-uuid={@item.uuid}
+            phx-value-layout_uuid={@item.layout_uuid}
           >
             ×
           </button>
         </div>
-
-        <div class="text-xs opacity-60 mt-2">
-          {@item.description}
-        </div>
+        {@item.value.(assigns.phoenix_kit_current_user)}
+        <div class="text-xs opacity-60 mt-2"></div>
       </div>
     </div>
     """
   end
 
-  defp parse_int(value) when is_integer(value), do: value
+  def handle_event("remove_widget", %{"uuid" => uuid, "layout_uuid" => layout_uuid}, socket) do
+    widget = Widget.get_widget(uuid)
 
-  defp parse_int(value, default \\ 2) do
-    case Integer.parse(value) do
-      {int, _} -> int
-      :error -> default
-    end
+    socket =
+      if(widget) do
+        Framework.System.remove_widget(uuid, layout_uuid)
+
+        user = socket.assigns.phoenix_kit_current_user
+
+        grid_items =
+          Layout.layout_for(user, @page)
+          |> Framework.Dashboard.Grid.from_layout()
+
+        {:noreply,
+         assign(socket,
+           grid_items: grid_items,
+           available: Framework.Schema.Widget.diff_widgets(grid_items, Widget.load_all_widgets())
+         )}
+      else
+        {:noreply, socket}
+      end
   end
-
-  def handle_event("remove_widget", %{"uuid" => uuid}, socket) do
-    Layout.remove_widget(socket.assigns.phoenix_kit_current_user, uuid)
-
-    {:noreply,
-      assign(socket,
-        widgets: Layout.widgets_for(socket.assigns.current_user),
-        available: Widget.load_all_widgets(socket.assigns.current_user)
-      )}
-  end
-#
-#  def handle_event("save_grid", %{"items" => items}, socket) do
-#    layouts =
-#      Enum.map(items, fn item ->
-#        %{
-#          user_uuid: socket.assigns.phoenix_kit_current_user.uuid,
-#          uuid: item["uuid"],
-#          x: parse_int(item["x"]),
-#          y: parse_int(item["y"]),
-#          w: parse_int(item["w"], 3),
-#          h: parse_int(item["h"], 2),
-#          updated_at: DateTime.utc_now() |> DateTime.truncate(:second)
-#        }
-#      end)
-#
-#    case Layout.save_grid(socket.assigns.phoenix_kit_current_user, items) do
-#      :ok ->
-#        {:noreply, socket}
-#
-#      {:error, _reason} ->
-#        {:noreply, put_flash(socket, :error, "Failed to save layout")}
-#    end
-#
-#    {:noreply, socket}
-#  end
 end

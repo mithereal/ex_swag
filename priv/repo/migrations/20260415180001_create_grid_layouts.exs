@@ -15,7 +15,7 @@ defmodule Framework.Repo.Migrations.CreateGridLayouts do
             on_delete: :delete_all
           )
 
-      add :name, :string, default: "My Grid"
+      add :name, :string, default: "Dashboard"
       add :sidebar_open, :boolean, default: true
       add :grid_config, :map, default: %{}
 

@@ -15,14 +15,19 @@ config :phoenix_kit,
   url_prefix: "/home",
   repo: Framework.Repo,
   mailer: Framework.Mailer,
+  project_title: "Swag Craft",
   layouts_module: FrameworkWeb.Layouts,
   phoenix_version_strategy: :modern,
   user_dashboard_categories: [
     %{
       tabs: [
-        %{description: nil, title: "first item", url: "/dashboard", icon: "hero-document"}
+        %{description: nil, title: "Jobs", url: "/dashboard", icon: "hero-document"},
+        %{description: nil, title: "Jobs", url: "/dashboard", icon: "hero-document"},
+        %{description: nil, title: "Tasks", url: "/dashboard", icon: "hero-document"},
+        %{description: nil, title: "Approvals", url: "/dashboard", icon: "hero-document"},
+        %{description: nil, title: "Packages", url: "/dashboard", icon: ""}
       ],
-      title: "General",
+      title: "Production",
       icon: "hero-folder"
     }
   ]
@@ -49,6 +54,8 @@ config :framework, FrameworkWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
+# config :framework, Framework.Mailer, adapter: Swoosh.Adapters.Local
+
 config :framework, Framework.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)

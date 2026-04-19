@@ -53,9 +53,8 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
- # host = System.get_env("PHX_HOST") || "example.com"
+  # host = System.get_env("PHX_HOST") || "example.com"
   host = System.get_env("RENDER_EXTERNAL_HOSTNAME") || "localhost"
-
 
   config :framework, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
@@ -119,4 +118,6 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Req
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  # config :framework, Framework.Mailer, api_key: System.fetch_env!("RESEND_API_KEY")
 end

@@ -9,4 +9,8 @@ defmodule FrameworkWeb.PageController do
       _token -> redirect(conn, to: PhoenixKit.Utils.Routes.path("/dashboard"))
     end
   end
+
+  def funding(conn, _params) do
+    render(conn, :funding)
+  end
 end

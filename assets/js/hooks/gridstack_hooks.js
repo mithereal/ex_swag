@@ -15,37 +15,65 @@ export const GridStackHooks = {
    * </div>
    */
   GridStack: {
-    mounted() {
-      // Initialize GridStack with options from data attribute
-      const options = this.el.dataset.options ? JSON.parse(this.el.dataset.options) : {};
-      this.grid = GridStack.init(options, this.el);
+mounted() {
+  const options = this.el.dataset.options
+    ? JSON.parse(this.el.dataset.options)
+    : {};
 
-      // Store reference for event handlers
-      this.gridId = this.el.id;
+  // ✅ enforce sane defaults (prevent overlap + enable UX)
+  this.grid = GridStack.init({
+    float: false,
+    animate: true,
+    ...options
+  }, this.el);
 
-      // Bind all event handlers
-      this.setupEventHandlers();
-      this.setupResizeHandlers();
-      this.setupChangeHandlers();
-    },
+  this.gridId = this.el.id;
+
+  // 🔥 CRITICAL: adopt existing LiveView-rendered items
+  const items = this.el.querySelectorAll('.grid-stack-item');
+  if (items.length > 0) {
+    this.grid.makeWidget(items);
+  }
+
+  // optional: compact to resolve any bad initial positions
+  this.grid.compact();
+
+  // Bind events
+  this.setupEventHandlers();
+  this.setupResizeHandlers();
+  this.setupChangeHandlers();
+
+  // ✅ debounce layout saving (prevents event spam)
+  this.saveLayout = this.debounce(() => {
+    const layout = this.grid.engine.nodes.map(n => ({
+      id: n.el.id,
+      x: n.x,
+      y: n.y,
+      w: n.w,
+      h: n.h
+    }));
+
+    this.pushEvent("grid:save_layout", { layout });
+  }, 300);
+
+  // hook change → persistence
+  this.grid.on('change', () => {
+    this.saveLayout();
+  });
+},
 
     /**
      * Handle LiveView updates
      */
-    updated() {
-      // Sync grid state with any DOM changes from LiveView
-      if (this.grid) {
-        this.grid.batchUpdate();
-        // Re-initialize GridStack to pick up any new items
-        const currentOptions = this.grid.opts;
-        this.grid.removeAll();
-        this.grid = GridStack.init(currentOptions, this.el);
-        this.setupEventHandlers();
-        this.setupResizeHandlers();
-        this.setupChangeHandlers();
-        this.grid.commit();
+updated() {
+  if (!this.grid) return;
+
+    this.el.querySelectorAll('.grid-stack-item').forEach(el => {
+      if (!el.gridstackNode) {
+        this.grid.addWidget(el, { autoPosition: true });
       }
-    },
+    });
+},
 
     /**
      * Setup core event handlers for grid changes
@@ -352,15 +380,29 @@ export const GridStackHooks = {
    */
   GridStackItem: {
     mounted() {
-      const config = this.el.dataset.config ? JSON.parse(this.el.dataset.config) : {};
-      this.itemId = this.el.id;
-      this.config = config;
+    const options = {
+        float: true,
+        cellHeight: 80,
+        minRow: 1,
+        disableOneColumnMode: true,
 
-      // Apply item-specific configuration
-      if (config.minW) this.el.setAttribute('gs-min-w', config.minW);
-      if (config.minH) this.el.setAttribute('gs-min-h', config.minH);
-      if (config.maxW) this.el.setAttribute('gs-max-w', config.maxW);
-      if (config.maxH) this.el.setAttribute('gs-max-h', config.maxH);
+        // 🔥 critical for proper resizing
+        resizable: {
+          handles: 'all'
+        },
+
+        // allow vertical expansion
+        margin: 5,
+        animate: false
+      };
+     const userOptions = this.el.dataset.options ? JSON.parse(this.el.dataset.options) : {};
+       this.grid = GridStack.init({ ...options, ...userOptions }, this.el);
+
+       this.gridId = this.el.id;
+
+       this.setupEventHandlers();
+       this.setupResizeHandlers();
+       this.setupChangeHandlers();
 
       // Add event listeners for item interactions
       this.el.addEventListener('dblclick', () => this.handleDoubleClick());

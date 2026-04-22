@@ -20,6 +20,7 @@ defmodule FrameworkWeb.Router do
   scope "/", FrameworkWeb do
     pipe_through :browser
     get "/", PageController, :index
+    get "/investors", PageController, :funding
   end
 
   #  scope "/print-services", FrameworkWeb do
@@ -89,8 +90,10 @@ defmodule FrameworkWeb.Router do
     live_session :ensure_auth_scope,
       on_mount: [{FrameworkWeb.Users.Auth, :phoenix_kit_ensure_authenticated_scope}] do
       live "/home/dashboard", FrameworkWeb.Dashboard.User, :index
+      live "/home/quote/:id", FrameworkWeb.Quotes.Show, :show
       live "/proof/:id", FrameworkWeb.DesignProofLive, :show
       live "/home/services", FrameworkWeb.ServicesLive.Index, :index
+      live "/home/sales", FrameworkWeb.Dashboard.Sales, :index
       live "/home/inventory", FrameworkWeb.Inventory.Live.InventoryLive, :index
       live "/home/materials", FrameworkWeb.MaterialsLive.Index, :index
       live "/home/test-ensure-auth", FrameworkWeb.PhoenixKitLive.TestEnsureAuthLive, :index

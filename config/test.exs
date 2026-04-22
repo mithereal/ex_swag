@@ -1,4 +1,5 @@
 import Config
+config :ash, disable_async?: true
 config :phoenix_kit, repo: Framework.Repo
 
 # Configure your database

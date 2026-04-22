@@ -18,6 +18,7 @@ defmodule Framework.System do
   def add_widget(uuid, layout_uuid) do
     %Framework.Schema.Widget{}
     |> Framework.Schema.Widget.changeset(%{uuid: uuid, layout_uuid: layout_uuid})
+    |> IO.inspect()
     |> Repo.insert()
   end
 
@@ -30,5 +31,9 @@ defmodule Framework.System do
 
   def widget_in_grid(uuid, layout_uuid) do
     Repo.get_by(Framework.Schema.Widget, uuid: uuid, layout_uuid: layout_uuid)
+  end
+
+  def update_widget_layout(_, _, _) do
+    {:ok, []}
   end
 end

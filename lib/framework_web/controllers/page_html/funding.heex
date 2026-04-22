@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print Shop Software</title>
+    
+<!-- Tailwind (assumes darkMode: 'class') -->
+    <script>
+      // Apply saved theme before paint
+      (function () {
+        const saved = localStorage.getItem("theme");
+        if (saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+
+  <body class="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-100">
+    
+<!-- NAV / THEME TOGGLE -->
+    <header class="border-b border-stone-200 dark:border-stone-800">
+      <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+        <span class="font-semibold">Print Shop Software</span>
+
+        <button
+          id="theme-toggle"
+          class="rounded-lg border border-stone-300 dark:border-stone-700 px-3 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-800"
+        >
+          Toggle Theme
+        </button>
+      </div>
+    </header>
+
+    <div class="min-h-screen">
+      
+<!-- HERO -->
+      <section class="relative overflow-hidden">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:flex lg:items-center lg:gap-12">
+          <div class="max-w-xl">
+            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+              Simple Software for Print Shops
+            </h1>
+
+            <p class="mt-6 text-lg text-stone-600 dark:text-stone-300">
+              Run your shop without the overhead. Quotes, jobs, invoices, and inventory — all in one place.
+            </p>
+
+            <div class="mt-6 flex items-center gap-4 text-sm text-stone-500 dark:text-stone-400">
+              <span>$25/month</span>
+              <span>•</span>
+              <span>Full-featured</span>
+              <span>•</span>
+              <span>Built in Arizona</span>
+            </div>
+
+            <div class="mt-8 flex gap-4">
+              <a
+                href="#"
+                class="rounded-xl bg-black text-white dark:bg-white dark:text-black px-6 py-3 text-sm font-medium"
+              >
+                Request Access
+              </a>
+              <a
+                href="#"
+                class="rounded-xl border border-stone-300 dark:border-stone-700 px-6 py-3 text-sm font-medium hover:bg-stone-100 dark:hover:bg-stone-800"
+              >
+                See Demo
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-12 lg:mt-0 flex-1">
+            <div class="rounded-2xl bg-white dark:bg-stone-800 shadow-xl ring-1 ring-stone-200 dark:ring-stone-700 p-4">
+              <img src="/images/dashboard.png" class="rounded-xl w-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+<!-- FEATURES -->
+      <section class="bg-white dark:bg-stone-800 border-y border-stone-200 dark:border-stone-700">
+        <div class="mx-auto max-w-6xl px-6 py-16">
+          <h2 class="text-2xl font-semibold text-center">Everything You Actually Need</h2>
+
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-sm">
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Quotes
+            </div>
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Job Tracking
+            </div>
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Invoices
+            </div>
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Production Workflow
+            </div>
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Customers
+            </div>
+            <div class="p-6 rounded-xl border bg-stone-50 dark:bg-stone-900 dark:border-stone-700">
+              Inventory
+            </div>
+          </div>
+        </div>
+      </section>
+      
+<!-- SCREENSHOTS -->
+      <section class="mx-auto max-w-7xl px-6 py-20">
+        <h2 class="text-2xl font-semibold">See How It Works</h2>
+
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+          <div class="rounded-2xl bg-white dark:bg-stone-800 shadow ring-1 ring-stone-200 dark:ring-stone-700 p-4">
+            <img src="/images/quotes.png" class="rounded-xl w-full" />
+          </div>
+
+          <div class="rounded-2xl bg-white dark:bg-stone-800 shadow ring-1 ring-stone-200 dark:ring-stone-700 p-4">
+            <img src="/images/jobs.png" class="rounded-xl w-full" />
+          </div>
+
+          <div class="rounded-2xl bg-white dark:bg-stone-800 shadow ring-1 ring-stone-200 dark:ring-stone-700 p-4">
+            <img src="/images/invoices.png" class="rounded-xl w-full" />
+          </div>
+
+          <div class="rounded-2xl bg-white dark:bg-stone-800 shadow ring-1 ring-stone-200 dark:ring-stone-700 p-4">
+            <img src="/images/inventory.png" class="rounded-xl w-full" />
+          </div>
+        </div>
+      </section>
+      
+<!-- PRICING -->
+      <section class="mx-auto max-w-4xl px-6 py-20 text-center">
+        <h2 class="text-3xl font-bold">$25/month</h2>
+        <p class="mt-4 text-stone-600 dark:text-stone-300">No tiers. No hidden fees.</p>
+
+        <div class="mt-8">
+          <a
+            href="#"
+            class="rounded-xl bg-black text-white dark:bg-white dark:text-black px-8 py-4 text-sm font-medium"
+          >
+            Get Started
+          </a>
+        </div>
+      </section>
+    </div>
+    
+<!-- THEME SCRIPT -->
+    <script>
+      const btn = document.getElementById("theme-toggle");
+
+      btn.addEventListener("click", () => {
+        const html = document.documentElement;
+        html.classList.toggle("dark");
+
+        if (html.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      });
+    </script>
+  </body>
+</html>

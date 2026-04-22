@@ -1,0 +1,110 @@
+<Layouts.app flash={@flash} current_user={@current_user} uri={@uri}>
+
+    <div class="grid grid-cols-3 gap-6 p-6">
+
+        <!-- ===================== -->
+        <!-- LEFT: CONTROL PANEL -->
+        <!-- ===================== -->
+        <div class="border rounded p-4 space-y-4">
+
+            <h2 class="text-lg font-bold">Quote Control</h2>
+
+            <div class="text-sm">
+                <p><strong>ID:</strong> <%= @quote.id %></p>
+                <p><strong>Status:</strong> <%= @quote.status %></p>
+            </div>
+
+            <div class="p-3 bg-gray-50 rounded">
+                <p><strong>Risk Score:</strong> <%= @analysis.score %></p>
+                <p><strong>Margin:</strong> <%= @analysis.margin %></p>
+                <p>
+                    <strong>Auto Approve:</strong>
+                    <%= if @analysis.auto_approve, do: "YES", else: "NO" %>
+                </p>
+            </div>
+
+            <div class="p-3 bg-blue-50 rounded">
+                <p class="font-semibold">ETA</p>
+                <p><%= @eta %></p>
+            </div>
+
+            <div class="flex gap-2">
+                <button phx-click="send_for_approval" class="bg-blue-500 text-white px-3 py-1 rounded">
+                    Submit
+                </button>
+            </div>
+
+        </div>
+
+        <!-- ===================== -->
+        <!-- MIDDLE: JOBS -->
+        <!-- ===================== -->
+        <div class="border rounded p-4">
+
+            <h2 class="text-lg font-bold mb-3">Jobs</h2>
+
+            <%= for job <- @quote.jobs do %>
+
+            <div class="border p-3 mb-3 rounded">
+
+                <p class="font-semibold">
+                    <%= job.print_service.name %>
+                </p>
+
+                <p class="text-sm text-gray-500">
+                    Preset: <%= job.job_preset.name %>
+                </p>
+
+                <p>Qty: <%= job.quantity %></p>
+
+                <div class="text-xs text-gray-500 mt-2">
+                    Tasks: <%= length(job.tasks) %>
+                </div>
+
+            </div>
+
+            <% end %>
+
+        </div>
+
+        <!-- ===================== -->
+        <!-- RIGHT: TASK TIMELINE -->
+        <!-- ===================== -->
+        <div class="border rounded p-4">
+
+            <h2 class="text-lg font-bold mb-3">Live Production</h2>
+
+            <%= for job <- @quote.jobs do %>
+
+            <div class="mb-4">
+
+                <p class="font-semibold mb-2">
+                    Job: <%= job.print_service.name %>
+                </p>
+
+                <%= for task <- job.tasks do %>
+
+                <div class={"p-2 mb-2 rounded #{task.status == "done" && "bg-green-100" || "bg-yellow-50"}"}>
+
+                <div class="flex justify-between">
+                    <span><%= task.name %></span>
+                    <span class="text-xs"><%= task.status %></span>
+                </div>
+
+                <div class="text-xs text-gray-500">
+                    <%= task.scheduled_start %> → <%= task.scheduled_end %>
+                </div>
+
+            </div>
+
+            <% end %>
+
+        </div>
+
+        <% end %>
+
+    </div>
+
+    </div>
+
+</Layouts.app>

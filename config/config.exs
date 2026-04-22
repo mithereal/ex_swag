@@ -7,6 +7,8 @@
 # General application configuration
 import Config
 
+config :spark, formatter: ["Ash.Resource": [section_order: [:postgres]]]
+config :ash, known_types: [AshPostgres.Timestamptz, AshPostgres.TimestamptzUsec]
 config :swoosh, api_client: Swoosh.ApiClient.Finch
 
 config :phoenix_kit,
@@ -21,11 +23,23 @@ config :phoenix_kit,
   user_dashboard_categories: [
     %{
       tabs: [
-        %{description: nil, title: "Jobs", url: "/dashboard", icon: "hero-document"},
+        %{description: nil, title: "Dashboard", url: "/sales", icon: "hero-document"},
+        %{description: nil, title: "Invoices", url: "/sales", icon: "hero-document"},
+        %{description: nil, title: "Customers", url: "/sales", icon: "hero-document"},
+        %{description: nil, title: "Orders", url: "/sales", icon: "hero-document"},
+        %{description: nil, title: "Messages", url: "/sales", icon: "hero-document"}
+      ],
+      title: "Sales",
+      icon: "hero-folder"
+    },
+    %{
+      tabs: [
+        %{description: nil, title: "Dashboard", url: "/sales", icon: "hero-document"},
         %{description: nil, title: "Jobs", url: "/dashboard", icon: "hero-document"},
         %{description: nil, title: "Tasks", url: "/dashboard", icon: "hero-document"},
         %{description: nil, title: "Approvals", url: "/dashboard", icon: "hero-document"},
-        %{description: nil, title: "Packages", url: "/dashboard", icon: ""}
+        %{description: nil, title: "Packages", url: "/dashboard", icon: ""},
+        %{description: nil, title: "Shipment", url: "/dashboard", icon: ""}
       ],
       title: "Production",
       icon: "hero-folder"

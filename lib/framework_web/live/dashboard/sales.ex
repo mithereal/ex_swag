@@ -1,6 +1,6 @@
-defmodule FrameworkWeb.Dashboard.User do
+defmodule FrameworkWeb.Dashboard.Sales do
   @moduledoc """
-  User dashboard LiveView for user.
+  Sales dashboard LiveView for user.
   """
 
   use FrameworkWeb, :live_view
@@ -14,7 +14,7 @@ defmodule FrameworkWeb.Dashboard.User do
   import PhoenixKitWeb.Components.Core.UserDashboardHeader,
     only: [user_dashboard_header: 1]
 
-  @page "dashboard"
+  @page "Sales Dashboard"
 
   @impl true
   def mount(_params, _session, socket) do

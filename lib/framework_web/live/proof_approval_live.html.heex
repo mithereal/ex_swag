@@ -1,0 +1,59 @@
+<Layouts.app flash={@flash} current_user={@current_user} uri={@uri}>
+
+    <div class="max-w-3xl mx-auto p-6 space-y-6">
+
+        <h1 class="text-xl font-bold">Proof Review</h1>
+
+        <!-- STATUS -->
+        <div class="p-3 border rounded">
+            <p><strong>Status:</strong> <%= @proof.status %></p>
+            <p><strong>Revision:</strong> <%= @proof.current_revision %></p>
+        </div>
+
+        <!-- FILES -->
+        <div>
+            <h2 class="font-semibold mb-2">Files</h2>
+
+            <%= for file <- @proof.files do %>
+            <div class="border p-2 rounded mb-2">
+                <a href={file.file_url} target="_blank">
+                    <%= file.file_type %> file
+                </a>
+            </div>
+            <% end %>
+        </div>
+
+        <!-- REVISION INFO -->
+        <div class="border p-3 rounded bg-gray-50">
+            <h2 class="font-semibold">Latest Revision</h2>
+
+            <%= if @revision do %>
+            <p>Revision #: <%= @revision.revision_number %></p>
+
+            <%= if @revision.price_overrides do %>
+            <p class="mt-2 font-semibold">Overrides:</p>
+
+            <%= for o <- @revision.price_overrides do %>
+            <div class="text-sm">
+                Line: <%= o["quote_job_id"] %>
+                → $<%= o["override_price"] %>
+            </div>
+            <% end %>
+            <% end %>
+            <% end %>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex gap-2">
+            <button phx-click="approve" class="bg-green-500 text-white px-4 py-2 rounded">
+                Approve
+            </button>
+
+            <button phx-click="reject" class="bg-red-500 text-white px-4 py-2 rounded">
+                Reject
+            </button>
+        </div>
+
+    </div>
+
+</Layouts.app>

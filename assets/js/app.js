@@ -24,9 +24,11 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import {hooks as colocatedHooks} from "phoenix-colocated/framework"
 import topbar from "../vendor/topbar"
+import "gridstack/dist/gridstack-all.js"
 import GridStackHooks from './hooks/gridstack_hooks'
+import PersistHooks from './hooks/persist'
 
-let Hooks = {...GridStackHooks}
+let Hooks = {...GridStackHooks, ...PersistHooks}
 
 
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
